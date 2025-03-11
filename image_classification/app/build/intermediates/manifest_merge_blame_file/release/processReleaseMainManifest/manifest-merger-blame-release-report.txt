@@ -1,0 +1,148 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    xmlns:dist="http://schemas.android.com/apk/distribution"
+4    package="org.tensorflow.lite.examples.imageclassification"
+5    android:versionCode="1"
+6    android:versionName="1.0" >
+7
+8    <uses-sdk
+9        android:minSdkVersion="24"
+10        android:targetSdkVersion="34" />
+11
+12    <!-- Enable instant app support -->
+13    <dist:module dist:instant="true" />
+13-->/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/AndroidManifest.xml:7:5-40
+13-->/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/AndroidManifest.xml:7:18-37
+14
+15    <!-- Declare features -->
+16    <uses-feature android:name="android.hardware.camera" />
+16-->/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/AndroidManifest.xml:10:5-60
+16-->/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/AndroidManifest.xml:10:19-57
+17
+18    <!-- Declare permissions -->
+19    <uses-permission android:name="android.permission.CAMERA" />
+19-->/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/AndroidManifest.xml:13:5-65
+19-->/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/AndroidManifest.xml:13:22-62
+20
+21    <permission
+21-->[androidx.core:core:1.12.0] /Users/stefanovergani/.gradle/caches/8.9/transforms/f03fc481a7c1efc61dc6962cdf432106/transformed/core-1.12.0/AndroidManifest.xml:22:5-24:47
+22        android:name="org.tensorflow.lite.examples.imageclassification.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+22-->[androidx.core:core:1.12.0] /Users/stefanovergani/.gradle/caches/8.9/transforms/f03fc481a7c1efc61dc6962cdf432106/transformed/core-1.12.0/AndroidManifest.xml:23:9-81
+23        android:protectionLevel="signature" />
+23-->[androidx.core:core:1.12.0] /Users/stefanovergani/.gradle/caches/8.9/transforms/f03fc481a7c1efc61dc6962cdf432106/transformed/core-1.12.0/AndroidManifest.xml:24:9-44
+24
+25    <uses-permission android:name="org.tensorflow.lite.examples.imageclassification.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+25-->[androidx.core:core:1.12.0] /Users/stefanovergani/.gradle/caches/8.9/transforms/f03fc481a7c1efc61dc6962cdf432106/transformed/core-1.12.0/AndroidManifest.xml:26:5-97
+25-->[androidx.core:core:1.12.0] /Users/stefanovergani/.gradle/caches/8.9/transforms/f03fc481a7c1efc61dc6962cdf432106/transformed/core-1.12.0/AndroidManifest.xml:26:22-94
+26    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+27    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+28    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+29
+30    <application
+30-->/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/AndroidManifest.xml:15:5-46:19
+31        android:allowBackup="true"
+31-->/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/AndroidManifest.xml:16:9-35
+32        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+32-->[androidx.core:core:1.12.0] /Users/stefanovergani/.gradle/caches/8.9/transforms/f03fc481a7c1efc61dc6962cdf432106/transformed/core-1.12.0/AndroidManifest.xml:28:18-86
+33        android:extractNativeLibs="false"
+34        android:icon="@mipmap/ic_launcher"
+34-->/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/AndroidManifest.xml:17:9-43
+35        android:label="@string/app_name"
+35-->/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/AndroidManifest.xml:18:9-41
+36        android:roundIcon="@mipmap/ic_launcher_round"
+36-->/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/AndroidManifest.xml:19:9-54
+37        android:supportsRtl="true"
+37-->/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/AndroidManifest.xml:20:9-35
+38        android:taskAffinity="" >
+38-->/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/AndroidManifest.xml:21:9-32
+39        <activity
+39-->/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/AndroidManifest.xml:24:9-45:20
+40            android:name="org.tensorflow.lite.examples.imageclassification.MainActivity"
+40-->/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/AndroidManifest.xml:25:13-41
+41            android:clearTaskOnLaunch="true"
+41-->/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/AndroidManifest.xml:26:13-45
+42            android:configChanges="orientation|screenLayout|screenSize|smallestScreenSize"
+42-->/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/AndroidManifest.xml:27:13-91
+43            android:exported="true"
+43-->/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/AndroidManifest.xml:28:13-36
+44            android:resizeableActivity="true"
+44-->/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/AndroidManifest.xml:29:13-46
+45            android:rotationAnimation="seamless"
+45-->/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/AndroidManifest.xml:30:13-49
+46            android:theme="@style/AppTheme" >
+46-->/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/AndroidManifest.xml:31:13-44
+47
+48            <!-- Main app intent filter -->
+49            <intent-filter>
+49-->/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/AndroidManifest.xml:35:13-39:29
+50                <action android:name="android.intent.action.MAIN" />
+50-->/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/AndroidManifest.xml:36:17-69
+50-->/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/AndroidManifest.xml:36:25-66
+51
+52                <category android:name="android.intent.category.LAUNCHER" />
+52-->/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/AndroidManifest.xml:38:17-77
+52-->/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/AndroidManifest.xml:38:27-74
+53            </intent-filter>
+54
+55            <!-- Declare notch support -->
+56            <meta-data
+56-->/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/AndroidManifest.xml:42:13-44:40
+57                android:name="android.notch_support"
+57-->/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/AndroidManifest.xml:43:17-53
+58                android:value="true" />
+58-->/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/AndroidManifest.xml:44:17-37
+59        </activity>
+60
+61        <uses-library
+61-->[androidx.window:window:1.1.0-alpha02] /Users/stefanovergani/.gradle/caches/8.9/transforms/447734ef23b6b831f4c9ccbf6f7c5a45/transformed/window-1.1.0-alpha02/AndroidManifest.xml:25:9-27:40
+62            android:name="androidx.window.extensions"
+62-->[androidx.window:window:1.1.0-alpha02] /Users/stefanovergani/.gradle/caches/8.9/transforms/447734ef23b6b831f4c9ccbf6f7c5a45/transformed/window-1.1.0-alpha02/AndroidManifest.xml:26:13-54
+63            android:required="false" />
+63-->[androidx.window:window:1.1.0-alpha02] /Users/stefanovergani/.gradle/caches/8.9/transforms/447734ef23b6b831f4c9ccbf6f7c5a45/transformed/window-1.1.0-alpha02/AndroidManifest.xml:27:13-37
+64        <uses-library
+64-->[androidx.window:window:1.1.0-alpha02] /Users/stefanovergani/.gradle/caches/8.9/transforms/447734ef23b6b831f4c9ccbf6f7c5a45/transformed/window-1.1.0-alpha02/AndroidManifest.xml:28:9-30:40
+65            android:name="androidx.window.sidecar"
+65-->[androidx.window:window:1.1.0-alpha02] /Users/stefanovergani/.gradle/caches/8.9/transforms/447734ef23b6b831f4c9ccbf6f7c5a45/transformed/window-1.1.0-alpha02/AndroidManifest.xml:29:13-51
+66            android:required="false" />
+66-->[androidx.window:window:1.1.0-alpha02] /Users/stefanovergani/.gradle/caches/8.9/transforms/447734ef23b6b831f4c9ccbf6f7c5a45/transformed/window-1.1.0-alpha02/AndroidManifest.xml:30:13-37
+67
+68        <service
+68-->[androidx.camera:camera-camera2:1.2.0-alpha02] /Users/stefanovergani/.gradle/caches/8.9/transforms/1da9c0b2b6f686e7c8352179f49cbe1a/transformed/camera-camera2-1.2.0-alpha02/AndroidManifest.xml:25:9-34:19
+69            android:name="androidx.camera.core.impl.MetadataHolderService"
+69-->[androidx.camera:camera-camera2:1.2.0-alpha02] /Users/stefanovergani/.gradle/caches/8.9/transforms/1da9c0b2b6f686e7c8352179f49cbe1a/transformed/camera-camera2-1.2.0-alpha02/AndroidManifest.xml:26:13-75
+70            android:enabled="false"
+70-->[androidx.camera:camera-camera2:1.2.0-alpha02] /Users/stefanovergani/.gradle/caches/8.9/transforms/1da9c0b2b6f686e7c8352179f49cbe1a/transformed/camera-camera2-1.2.0-alpha02/AndroidManifest.xml:27:13-36
+71            android:exported="false" >
+71-->[androidx.camera:camera-camera2:1.2.0-alpha02] /Users/stefanovergani/.gradle/caches/8.9/transforms/1da9c0b2b6f686e7c8352179f49cbe1a/transformed/camera-camera2-1.2.0-alpha02/AndroidManifest.xml:28:13-37
+72            <meta-data
+72-->[androidx.camera:camera-camera2:1.2.0-alpha02] /Users/stefanovergani/.gradle/caches/8.9/transforms/1da9c0b2b6f686e7c8352179f49cbe1a/transformed/camera-camera2-1.2.0-alpha02/AndroidManifest.xml:31:13-33:89
+73                android:name="androidx.camera.core.impl.MetadataHolderService.DEFAULT_CONFIG_PROVIDER"
+73-->[androidx.camera:camera-camera2:1.2.0-alpha02] /Users/stefanovergani/.gradle/caches/8.9/transforms/1da9c0b2b6f686e7c8352179f49cbe1a/transformed/camera-camera2-1.2.0-alpha02/AndroidManifest.xml:32:17-103
+74                android:value="androidx.camera.camera2.Camera2Config$DefaultProvider" />
+74-->[androidx.camera:camera-camera2:1.2.0-alpha02] /Users/stefanovergani/.gradle/caches/8.9/transforms/1da9c0b2b6f686e7c8352179f49cbe1a/transformed/camera-camera2-1.2.0-alpha02/AndroidManifest.xml:33:17-86
+75        </service>
+76
+77        <provider
+77-->[androidx.emoji2:emoji2:1.0.0] /Users/stefanovergani/.gradle/caches/8.9/transforms/7d067c95a88b25be6dc3115858a668be/transformed/emoji2-1.0.0/AndroidManifest.xml:26:9-34:20
+78            android:name="androidx.startup.InitializationProvider"
+78-->[androidx.emoji2:emoji2:1.0.0] /Users/stefanovergani/.gradle/caches/8.9/transforms/7d067c95a88b25be6dc3115858a668be/transformed/emoji2-1.0.0/AndroidManifest.xml:27:13-67
+79            android:authorities="org.tensorflow.lite.examples.imageclassification.androidx-startup"
+79-->[androidx.emoji2:emoji2:1.0.0] /Users/stefanovergani/.gradle/caches/8.9/transforms/7d067c95a88b25be6dc3115858a668be/transformed/emoji2-1.0.0/AndroidManifest.xml:28:13-68
+80            android:exported="false" >
+80-->[androidx.emoji2:emoji2:1.0.0] /Users/stefanovergani/.gradle/caches/8.9/transforms/7d067c95a88b25be6dc3115858a668be/transformed/emoji2-1.0.0/AndroidManifest.xml:29:13-37
+81            <meta-data
+81-->[androidx.emoji2:emoji2:1.0.0] /Users/stefanovergani/.gradle/caches/8.9/transforms/7d067c95a88b25be6dc3115858a668be/transformed/emoji2-1.0.0/AndroidManifest.xml:31:13-33:52
+82                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+82-->[androidx.emoji2:emoji2:1.0.0] /Users/stefanovergani/.gradle/caches/8.9/transforms/7d067c95a88b25be6dc3115858a668be/transformed/emoji2-1.0.0/AndroidManifest.xml:32:17-75
+83                android:value="androidx.startup" />
+83-->[androidx.emoji2:emoji2:1.0.0] /Users/stefanovergani/.gradle/caches/8.9/transforms/7d067c95a88b25be6dc3115858a668be/transformed/emoji2-1.0.0/AndroidManifest.xml:33:17-49
+84            <meta-data
+84-->[androidx.lifecycle:lifecycle-process:2.4.0] /Users/stefanovergani/.gradle/caches/8.9/transforms/f8a727b022926ca58e6c718b497c24ce/transformed/lifecycle-process-2.4.0/AndroidManifest.xml:31:13-33:52
+85                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+85-->[androidx.lifecycle:lifecycle-process:2.4.0] /Users/stefanovergani/.gradle/caches/8.9/transforms/f8a727b022926ca58e6c718b497c24ce/transformed/lifecycle-process-2.4.0/AndroidManifest.xml:32:17-78
+86                android:value="androidx.startup" />
+86-->[androidx.lifecycle:lifecycle-process:2.4.0] /Users/stefanovergani/.gradle/caches/8.9/transforms/f8a727b022926ca58e6c718b497c24ce/transformed/lifecycle-process-2.4.0/AndroidManifest.xml:33:17-49
+87        </provider>
+88    </application>
+89
+90</manifest>

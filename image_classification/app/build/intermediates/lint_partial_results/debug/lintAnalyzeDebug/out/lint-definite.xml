@@ -1,0 +1,596 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<incidents format="6" by="lint 8.7.2" type="incidents">
+
+    <incident
+        id="DefaultLocale"
+        severity="warning"
+        message="Implicitly using the default locale is a common source of bugs: Use `String.format(Locale, ...)` instead">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/org/tensorflow/lite/examples/imageclassification/fragments/CameraFragment.kt"
+            line="233"
+            column="13"
+            startOffset="9014"
+            endLine="233"
+            endColumn="67"
+            endOffset="9068"/>
+    </incident>
+
+    <incident
+        id="DefaultLocale"
+        severity="warning"
+        message="Implicitly using the default locale is a common source of bugs: Use `String.format(Locale, ...)` instead">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/org/tensorflow/lite/examples/imageclassification/fragments/CameraFragment.kt"
+            line="233"
+            column="13"
+            startOffset="9014"
+            endLine="233"
+            endColumn="67"
+            endOffset="9068"/>
+    </incident>
+
+    <incident
+        id="DefaultLocale"
+        severity="warning"
+        message="Implicitly using the default locale is a common source of bugs: Use `String.format(Locale, ...)` instead">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/org/tensorflow/lite/examples/imageclassification/fragments/CameraFragment.kt"
+            line="349"
+            column="17"
+            startOffset="13963"
+            endLine="349"
+            endColumn="54"
+            endOffset="14000"/>
+    </incident>
+
+    <incident
+        id="DefaultLocale"
+        severity="warning"
+        message="Implicitly using the default locale is a common source of bugs: Use `String.format(Locale, ...)` instead">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/org/tensorflow/lite/examples/imageclassification/fragments/CameraFragment.kt"
+            line="349"
+            column="17"
+            startOffset="13963"
+            endLine="349"
+            endColumn="54"
+            endOffset="14000"/>
+    </incident>
+
+    <incident
+        id="DefaultLocale"
+        severity="warning"
+        message="Implicitly using the default locale is a common source of bugs: Use `String.format(Locale, ...)` instead">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/org/tensorflow/lite/examples/imageclassification/fragments/ClassificationResultsAdapter.kt"
+            line="76"
+            column="51"
+            startOffset="2757"
+            endLine="76"
+            endColumn="79"
+            endOffset="2785"/>
+    </incident>
+
+    <incident
+        id="DefaultLocale"
+        severity="warning"
+        message="Implicitly using the default locale is a common source of bugs: Use `String.format(Locale, ...)` instead">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/org/tensorflow/lite/examples/imageclassification/fragments/ClassificationResultsAdapter.kt"
+            line="76"
+            column="51"
+            startOffset="2757"
+            endLine="76"
+            endColumn="79"
+            endOffset="2785"/>
+    </incident>
+
+    <incident
+        id="OldTargetApi"
+        severity="warning"
+        message="Not targeting the latest versions of Android; compatibility modes apply. Consider testing and updating this version. Consult the `android.os.Build.VERSION_CODES` javadoc for details.">
+        <fix-replace
+            description="Update targetSdkVersion to 35"
+            oldString="34"
+            replacement="35"
+            priority="0"/>
+        <location
+            file="${:app*projectDir}/build.gradle"
+            line="16"
+            column="9"
+            startOffset="388"
+            endLine="16"
+            endColumn="21"
+            endOffset="400"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.core:core-ktx than 1.12.0 is available: 1.15.0">
+        <fix-replace
+            description="Change to 1.15.0"
+            family="Update versions"
+            oldString="1.12.0"
+            replacement="1.15.0"
+            priority="0"/>
+        <location
+            file="${:app*projectDir}/build.gradle"
+            line="57"
+            column="20"
+            startOffset="1421"
+            endLine="57"
+            endColumn="51"
+            endOffset="1452"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.appcompat:appcompat than 1.4.2 is available: 1.7.0">
+        <fix-replace
+            description="Change to 1.7.0"
+            family="Update versions"
+            oldString="1.4.2"
+            replacement="1.7.0"
+            priority="0"/>
+        <location
+            file="${:app*projectDir}/build.gradle"
+            line="60"
+            column="20"
+            startOffset="1546"
+            endLine="60"
+            endColumn="56"
+            endOffset="1582"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of com.google.android.material:material than 1.6.1 is available: 1.12.0">
+        <fix-replace
+            description="Change to 1.12.0"
+            family="Update versions"
+            oldString="1.6.1"
+            replacement="1.12.0"
+            priority="0"/>
+        <location
+            file="${:app*projectDir}/build.gradle"
+            line="61"
+            column="20"
+            startOffset="1602"
+            endLine="61"
+            endColumn="64"
+            endOffset="1646"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.constraintlayout:constraintlayout than 2.1.4 is available: 2.2.1">
+        <fix-replace
+            description="Change to 2.2.1"
+            family="Update versions"
+            oldString="2.1.4"
+            replacement="2.2.1"
+            priority="0"/>
+        <location
+            file="${:app*projectDir}/build.gradle"
+            line="62"
+            column="20"
+            startOffset="1666"
+            endLine="62"
+            endColumn="70"
+            endOffset="1716"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.navigation:navigation-fragment-ktx than 2.4.2 is available: 2.8.8">
+        <location
+            file="${:app*projectDir}/build.gradle"
+            line="66"
+            column="20"
+            startOffset="1793"
+            endLine="66"
+            endColumn="78"
+            endOffset="1851"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.navigation:navigation-ui-ktx than 2.4.2 is available: 2.8.8">
+        <location
+            file="${:app*projectDir}/build.gradle"
+            line="67"
+            column="20"
+            startOffset="1871"
+            endLine="67"
+            endColumn="72"
+            endOffset="1923"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.camera:camera-core than 1.2.0-alpha02 is available: 1.4.1">
+        <location
+            file="${:app*projectDir}/build.gradle"
+            line="71"
+            column="20"
+            startOffset="2014"
+            endLine="71"
+            endColumn="66"
+            endOffset="2060"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.camera:camera-camera2 than 1.2.0-alpha02 is available: 1.4.1">
+        <location
+            file="${:app*projectDir}/build.gradle"
+            line="72"
+            column="20"
+            startOffset="2080"
+            endLine="72"
+            endColumn="69"
+            endOffset="2129"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.camera:camera-lifecycle than 1.2.0-alpha02 is available: 1.4.1">
+        <location
+            file="${:app*projectDir}/build.gradle"
+            line="73"
+            column="20"
+            startOffset="2149"
+            endLine="73"
+            endColumn="71"
+            endOffset="2200"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.camera:camera-view than 1.2.0-alpha02 is available: 1.4.1">
+        <location
+            file="${:app*projectDir}/build.gradle"
+            line="74"
+            column="20"
+            startOffset="2220"
+            endLine="74"
+            endColumn="66"
+            endOffset="2266"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.window:window than 1.1.0-alpha02 is available: 1.3.0">
+        <fix-replace
+            description="Change to 1.3.0"
+            family="Update versions"
+            oldString="1.1.0-alpha02"
+            replacement="1.3.0"
+            priority="0"/>
+        <location
+            file="${:app*projectDir}/build.gradle"
+            line="77"
+            column="20"
+            startOffset="2308"
+            endLine="77"
+            endColumn="58"
+            endOffset="2346"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.test.ext:junit than 1.1.3 is available: 1.2.1">
+        <fix-replace
+            description="Change to 1.2.1"
+            family="Update versions"
+            oldString="1.1.3"
+            replacement="1.2.1"
+            priority="0"/>
+        <location
+            file="${:app*projectDir}/build.gradle"
+            line="81"
+            column="31"
+            startOffset="2442"
+            endLine="81"
+            endColumn="62"
+            endOffset="2473"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.test.espresso:espresso-core than 3.4.0 is available: 3.6.1">
+        <fix-replace
+            description="Change to 3.6.1"
+            family="Update versions"
+            oldString="3.4.0"
+            replacement="3.6.1"
+            priority="0"/>
+        <location
+            file="${:app*projectDir}/build.gradle"
+            line="82"
+            column="31"
+            startOffset="2504"
+            endLine="82"
+            endColumn="75"
+            endOffset="2548"/>
+    </incident>
+
+    <incident
+        id="Typos"
+        severity="warning"
+        message="Did you mean &quot;Lite!&quot; instead of &quot;Lite1&quot;?">
+        <fix-replace
+            description="Replace with &quot;Lite!&quot;"
+            oldString="Lite1"
+            replacement="Lite!"
+            priority="0">
+            <range
+                file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+                startOffset="2331"
+                endOffset="2349"/>
+        </fix-replace>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="49"
+            column="28"
+            startOffset="2344"
+            endLine="49"
+            endColumn="28"
+            endOffset="2348"/>
+    </incident>
+
+    <incident
+        id="ObsoleteSdkInt"
+        severity="warning"
+        message="This folder configuration (`v24`) is unnecessary; `minSdkVersion` is 24. Merge all the resources in this folder into `drawable`.">
+        <fix-data file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/drawable-v24" folderName="drawable" requiresApi="24"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/drawable-v24"/>
+    </incident>
+
+    <incident
+        id="Overdraw"
+        severity="warning"
+        message="Possible overdraw: Root element paints background `@color/bottom_sheet_background` with a theme that also paints a background (inferred theme is `@android:style/Theme.Holo`)">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/info_bottom_sheet.xml"
+            line="22"
+            column="5"
+            startOffset="999"
+            endLine="22"
+            endColumn="56"
+            endOffset="1050"/>
+    </incident>
+
+    <incident
+        id="MonochromeLauncherIcon"
+        severity="warning"
+        message="The application adaptive icon is missing a monochrome tag">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/mipmap-anydpi-v26/ic_launcher.xml"
+            line="17"
+            column="1"
+            startOffset="685"
+            endLine="20"
+            endColumn="17"
+            endOffset="911"/>
+    </incident>
+
+    <incident
+        id="MonochromeLauncherIcon"
+        severity="warning"
+        message="The application adaptive roundIcon is missing a monochrome tag">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/mipmap-anydpi-v26/ic_launcher_round.xml"
+            line="17"
+            column="1"
+            startOffset="685"
+            endLine="20"
+            endColumn="17"
+            endOffset="911"/>
+    </incident>
+
+    <incident
+        id="IconLocation"
+        severity="warning"
+        message="Found bitmap drawable `res/drawable/icn_chevron_up.png` in densityless folder">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/drawable/icn_chevron_up.png"/>
+    </incident>
+
+    <incident
+        id="ContentDescription"
+        severity="warning"
+        message="Missing `contentDescription` attribute on image">
+        <fix-alternatives>
+            <fix-attribute
+                description="Set contentDescription"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="contentDescription"
+                value="TODO"
+                point="4"
+                mark="0"/>
+            <fix-attribute
+                description="Set importantForAccessibility=&quot;no&quot;"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="importantForAccessibility"
+                value="no"/>
+        </fix-alternatives>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_main.xml"
+            line="49"
+            column="14"
+            startOffset="2096"
+            endLine="49"
+            endColumn="23"
+            endOffset="2105"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="Number formatting does not take into account locale settings. Consider using `String.format` instead.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/org/tensorflow/lite/examples/imageclassification/fragments/CameraFragment.kt"
+            line="230"
+            column="13"
+            startOffset="8887"
+            endLine="230"
+            endColumn="56"
+            endOffset="8930"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="Number formatting does not take into account locale settings. Consider using `String.format` instead.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/org/tensorflow/lite/examples/imageclassification/fragments/CameraFragment.kt"
+            line="235"
+            column="13"
+            startOffset="9149"
+            endLine="235"
+            endColumn="56"
+            endOffset="9192"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;0ms&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/info_bottom_sheet.xml"
+            line="71"
+            column="17"
+            startOffset="3164"
+            endLine="71"
+            endColumn="35"
+            endOffset="3182"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;0.50&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/info_bottom_sheet.xml"
+            line="114"
+            column="21"
+            startOffset="5341"
+            endLine="114"
+            endColumn="40"
+            endOffset="5360"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;3&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/info_bottom_sheet.xml"
+            line="165"
+            column="21"
+            startOffset="7934"
+            endLine="165"
+            endColumn="37"
+            endOffset="7950"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;2&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/info_bottom_sheet.xml"
+            line="216"
+            column="21"
+            startOffset="10523"
+            endLine="216"
+            endColumn="37"
+            endOffset="10539"/>
+    </incident>
+
+    <incident
+        id="RelativeOverlap"
+        severity="warning"
+        message="`TextView-1` can overlap `LinearLayout-3` if @string/label_confidence_threshold grows due to localized text expansion">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/info_bottom_sheet.xml"
+            line="84"
+            column="14"
+            startOffset="3727"
+            endLine="84"
+            endColumn="22"
+            endOffset="3735"/>
+    </incident>
+
+    <incident
+        id="RelativeOverlap"
+        severity="warning"
+        message="`TextView-1` can overlap `LinearLayout-3` if @string/label_max_results grows due to localized text expansion">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/info_bottom_sheet.xml"
+            line="135"
+            column="14"
+            startOffset="6332"
+            endLine="135"
+            endColumn="22"
+            endOffset="6340"/>
+    </incident>
+
+    <incident
+        id="RelativeOverlap"
+        severity="warning"
+        message="`TextView-1` can overlap `LinearLayout-3` if @string/label_threads grows due to localized text expansion">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/info_bottom_sheet.xml"
+            line="186"
+            column="14"
+            startOffset="8929"
+            endLine="186"
+            endColumn="22"
+            endOffset="8937"/>
+    </incident>
+
+    <incident
+        id="RelativeOverlap"
+        severity="warning"
+        message="`TextView-1` can overlap `@id/spinner_delegate` if @string/label_delegate grows due to localized text expansion">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/info_bottom_sheet.xml"
+            line="235"
+            column="14"
+            startOffset="11417"
+            endLine="235"
+            endColumn="22"
+            endOffset="11425"/>
+    </incident>
+
+    <incident
+        id="RelativeOverlap"
+        severity="warning"
+        message="`TextView-1` can overlap `@id/spinner_model` if @string/label_models grows due to localized text expansion">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/info_bottom_sheet.xml"
+            line="260"
+            column="14"
+            startOffset="12531"
+            endLine="260"
+            endColumn="22"
+            endOffset="12539"/>
+    </incident>
+
+</incidents>

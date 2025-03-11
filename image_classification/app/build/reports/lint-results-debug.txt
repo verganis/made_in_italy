@@ -1,0 +1,393 @@
+/Users/stefanovergani/.gradle/caches/8.9/transforms/ed294d1eca40926b114b126530bfc94c/transformed/fragment-1.4.1/jars/lint.jar: Warning: Library lint checks out of date;
+these checks will be skipped!
+
+Lint found an issue registry (androidx.fragment.lint.FragmentIssueRegistry)
+which was compiled against an older version of lint
+than this one. This is usually fine, but not in this
+case; some basic verification shows that the lint
+check jar references (for example) the following API
+which is no longer valid in this version of lint:
+org.jetbrains.uast.kotlin.KotlinUClass#getKtClass(): org.jetbrains.kotlin.psi.KtClassOrObject
+(Referenced from androidx/fragment/lint/OnCreateDialogIncorrectCallbackDetector$UastHandler.class)
+
+Therefore, this lint check library is not included
+in analysis. This affects the following lint checks:
+FragmentTagUsage
+FragmentAddMenuProvider
+FragmentBackPressedCallback
+FragmentLiveDataObserve
+UseRequireInsteadOfGet
+UseGetLayoutInflater
+DialogFragmentCallbacksDetector
+UnsafeRepeatOnLifecycleDetector
+DetachAndAttachSameFragment
+
+This is a known bug which is already fixed in
+`androidx.fragment:fragment:1.5.1` and later; update
+to that version. If you are not directly depending
+on this library but picking it up via a transitive
+dependency, explicitly add
+implementation 'androidx.fragment:fragment:1.5.1'
+(or later) to your build.gradle dependency block.
+
+Version of Lint API this lint check is using is 11.
+The Lint API version currently running is 16 (8.7+). [ObsoleteLintCustomCheck]
+
+   Explanation for issues of type "ObsoleteLintCustomCheck":
+   Lint can be extended with "custom checks": additional checks implemented by
+   developers and libraries to for example enforce specific API usages
+   required by a library or a company coding style guideline.
+
+   The Lint APIs are not yet stable, so these checks may either cause a
+   performance degradation, or stop working, or provide wrong results.
+
+   This warning flags custom lint checks that are found to be using obsolete
+   APIs and will need to be updated to run in the current lint environment.
+
+   It may also flag issues found to be using a newer version of the API,
+   meaning that you need to use a newer version of lint (or Android Studio or
+   Gradle plugin etc) to work with these checks.
+
+/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/java/org/tensorflow/lite/examples/imageclassification/fragments/CameraFragment.kt:233: Warning: Implicitly using the default locale is a common source of bugs: Use String.format(Locale, ...) instead [DefaultLocale]
+            String.format("%.2f", imageClassifierHelper.threshold)
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/java/org/tensorflow/lite/examples/imageclassification/fragments/CameraFragment.kt:233: Warning: Implicitly using the default locale is a common source of bugs: Use String.format(Locale, ...) instead [DefaultLocale]
+            String.format("%.2f", imageClassifierHelper.threshold)
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/java/org/tensorflow/lite/examples/imageclassification/fragments/CameraFragment.kt:349: Warning: Implicitly using the default locale is a common source of bugs: Use String.format(Locale, ...) instead [DefaultLocale]
+                String.format("%d ms", inferenceTime)
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/java/org/tensorflow/lite/examples/imageclassification/fragments/CameraFragment.kt:349: Warning: Implicitly using the default locale is a common source of bugs: Use String.format(Locale, ...) instead [DefaultLocale]
+                String.format("%d ms", inferenceTime)
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/java/org/tensorflow/lite/examples/imageclassification/fragments/ClassificationResultsAdapter.kt:76: Warning: Implicitly using the default locale is a common source of bugs: Use String.format(Locale, ...) instead [DefaultLocale]
+                tvScore.text = if (score != null) String.format("%.2f", score) else NO_VALUE
+                                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/java/org/tensorflow/lite/examples/imageclassification/fragments/ClassificationResultsAdapter.kt:76: Warning: Implicitly using the default locale is a common source of bugs: Use String.format(Locale, ...) instead [DefaultLocale]
+                tvScore.text = if (score != null) String.format("%.2f", score) else NO_VALUE
+                                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "DefaultLocale":
+   Calling String#toLowerCase() or #toUpperCase() without specifying an
+   explicit locale is a common source of bugs. The reason for that is that
+   those methods will use the current locale on the user's device, and even
+   though the code appears to work correctly when you are developing the app,
+   it will fail in some locales. For example, in the Turkish locale, the
+   uppercase replacement for i is not I.
+
+   If you want the methods to just perform ASCII replacement, for example to
+   convert an enum name, call String#toUpperCase(Locale.ROOT) instead. If you
+   really want to use the current locale, call
+   String#toUpperCase(Locale.getDefault()) instead.
+
+   https://developer.android.com/reference/java/util/Locale.html#default_locale
+
+/Users/stefanovergani/Projects/made_in_italy/image_classification/app/build.gradle:16: Warning: Not targeting the latest versions of Android; compatibility modes apply. Consider testing and updating this version. Consult the android.os.Build.VERSION_CODES javadoc for details. [OldTargetApi]
+        targetSdk 34
+        ~~~~~~~~~~~~
+
+   Explanation for issues of type "OldTargetApi":
+   When your application runs on a version of Android that is more recent than
+   your targetSdkVersion specifies that it has been tested with, various
+   compatibility modes kick in. This ensures that your application continues
+   to work, but it may look out of place. For example, if the targetSdkVersion
+   is less than 14, your app may get an option button in the UI.
+
+   To fix this issue, set the targetSdkVersion to the highest available value.
+   Then test your app to make sure everything works correctly. You may want to
+   consult the compatibility notes to see what changes apply to each version
+   you are adding support for:
+   https://developer.android.com/reference/android/os/Build.VERSION_CODES.html
+   as well as follow this guide:
+   https://developer.android.com/distribute/best-practices/develop/target-sdk.
+   html
+
+   https://developer.android.com/distribute/best-practices/develop/target-sdk.html
+
+/Users/stefanovergani/Projects/made_in_italy/image_classification/app/build.gradle:57: Warning: A newer version of androidx.core:core-ktx than 1.12.0 is available: 1.15.0 [GradleDependency]
+    implementation 'androidx.core:core-ktx:1.12.0'  // Changed from 1.15.0 to valid version
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/stefanovergani/Projects/made_in_italy/image_classification/app/build.gradle:60: Warning: A newer version of androidx.appcompat:appcompat than 1.4.2 is available: 1.7.0 [GradleDependency]
+    implementation 'androidx.appcompat:appcompat:1.4.2'
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/stefanovergani/Projects/made_in_italy/image_classification/app/build.gradle:61: Warning: A newer version of com.google.android.material:material than 1.6.1 is available: 1.12.0 [GradleDependency]
+    implementation 'com.google.android.material:material:1.6.1'
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/stefanovergani/Projects/made_in_italy/image_classification/app/build.gradle:62: Warning: A newer version of androidx.constraintlayout:constraintlayout than 2.1.4 is available: 2.2.1 [GradleDependency]
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/stefanovergani/Projects/made_in_italy/image_classification/app/build.gradle:66: Warning: A newer version of androidx.navigation:navigation-fragment-ktx than 2.4.2 is available: 2.8.8 [GradleDependency]
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/stefanovergani/Projects/made_in_italy/image_classification/app/build.gradle:67: Warning: A newer version of androidx.navigation:navigation-ui-ktx than 2.4.2 is available: 2.8.8 [GradleDependency]
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/stefanovergani/Projects/made_in_italy/image_classification/app/build.gradle:71: Warning: A newer version of androidx.camera:camera-core than 1.2.0-alpha02 is available: 1.4.1 [GradleDependency]
+    implementation "androidx.camera:camera-core:$camerax_version"
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/stefanovergani/Projects/made_in_italy/image_classification/app/build.gradle:72: Warning: A newer version of androidx.camera:camera-camera2 than 1.2.0-alpha02 is available: 1.4.1 [GradleDependency]
+    implementation "androidx.camera:camera-camera2:$camerax_version"
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/stefanovergani/Projects/made_in_italy/image_classification/app/build.gradle:73: Warning: A newer version of androidx.camera:camera-lifecycle than 1.2.0-alpha02 is available: 1.4.1 [GradleDependency]
+    implementation "androidx.camera:camera-lifecycle:$camerax_version"
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/stefanovergani/Projects/made_in_italy/image_classification/app/build.gradle:74: Warning: A newer version of androidx.camera:camera-view than 1.2.0-alpha02 is available: 1.4.1 [GradleDependency]
+    implementation "androidx.camera:camera-view:$camerax_version"
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/stefanovergani/Projects/made_in_italy/image_classification/app/build.gradle:77: Warning: A newer version of androidx.window:window than 1.1.0-alpha02 is available: 1.3.0 [GradleDependency]
+    implementation 'androidx.window:window:1.1.0-alpha02'
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/stefanovergani/Projects/made_in_italy/image_classification/app/build.gradle:81: Warning: A newer version of androidx.test.ext:junit than 1.1.3 is available: 1.2.1 [GradleDependency]
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/stefanovergani/Projects/made_in_italy/image_classification/app/build.gradle:82: Warning: A newer version of androidx.test.espresso:espresso-core than 3.4.0 is available: 3.6.1 [GradleDependency]
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "GradleDependency":
+   This detector looks for usages of libraries where the version you are using
+   is not the current stable release. Using older versions is fine, and there
+   are cases where you deliberately want to stick with an older version.
+   However, you may simply not be aware that a more recent version is
+   available, and that is what this lint check helps find.
+
+/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/res/values/strings.xml:49: Warning: Did you mean "Lite!" instead of "Lite1"? [Typos]
+        <item>EfficientNet Lite1</item>
+                           ^
+
+   Explanation for issues of type "Typos":
+   This check looks through the string definitions, and if it finds any words
+   that look like likely misspellings, they are flagged.
+
+/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/res/drawable-v24: Warning: This folder configuration (v24) is unnecessary; minSdkVersion is 24. Merge all the resources in this folder into drawable. [ObsoleteSdkInt]
+
+   Explanation for issues of type "ObsoleteSdkInt":
+   This check flags version checks that are not necessary, because the
+   minSdkVersion (or surrounding known API level) is already at least as high
+   as the version checked for.
+
+   Similarly, it also looks for resources in -vNN folders, such as values-v14
+   where the version qualifier is less than or equal to the minSdkVersion,
+   where the contents should be merged into the best folder.
+
+/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/res/layout/info_bottom_sheet.xml:22: Warning: Possible overdraw: Root element paints background @color/bottom_sheet_background with a theme that also paints a background (inferred theme is @android:style/Theme.Holo) [Overdraw]
+    android:background="@color/bottom_sheet_background"
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "Overdraw":
+   If you set a background drawable on a root view, then you should use a
+   custom theme where the theme background is null. Otherwise, the theme
+   background will be painted first, only to have your custom background
+   completely cover it; this is called "overdraw".
+
+   NOTE: This detector relies on figuring out which layouts are associated
+   with which activities based on scanning the Java code, and it's currently
+   doing that using an inexact pattern matching algorithm. Therefore, it can
+   incorrectly conclude which activity the layout is associated with and then
+   wrongly complain that a background-theme is hidden.
+
+   If you want your custom background on multiple pages, then you should
+   consider making a custom theme with your custom background and just using
+   that theme instead of a root element background.
+
+   Of course it's possible that your custom drawable is translucent and you
+   want it to be mixed with the background. However, you will get better
+   performance if you pre-mix the background with your drawable and use that
+   resulting image or color as a custom theme background instead.
+
+/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/res/values/colors.xml:25: Warning: The resource R.color.icActive appears to be unused [UnusedResources]
+    <color name="icActive">#FFFFFFFF</color>
+           ~~~~~~~~~~~~~~~
+/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/res/values/colors.xml:26: Warning: The resource R.color.icFocused appears to be unused [UnusedResources]
+    <color name="icFocused">#DDFFFFFF</color>
+           ~~~~~~~~~~~~~~~~
+/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/res/values/colors.xml:27: Warning: The resource R.color.icPressed appears to be unused [UnusedResources]
+    <color name="icPressed">#AAFFFFFF</color>
+           ~~~~~~~~~~~~~~~~
+/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/res/values/dimens.xml:19: Warning: The resource R.dimen.stroke_small appears to be unused [UnusedResources]
+    <dimen name="stroke_small">4dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~
+/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/res/values/dimens.xml:20: Warning: The resource R.dimen.round_button_medium appears to be unused [UnusedResources]
+    <dimen name="round_button_medium">64dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/res/drawable-v24/ic_launcher_foreground.xml:1: Warning: The resource R.drawable.ic_launcher_foreground appears to be unused [UnusedResources]
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+^
+/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/res/color/selector_ic.xml:2: Warning: The resource R.color.selector_ic appears to be unused [UnusedResources]
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+^
+/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/res/values/strings.xml:33: Warning: The resource R.string.label_fps appears to be unused [UnusedResources]
+    <string name="label_fps">Frames per Second</string>
+            ~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "UnusedResources":
+   Unused resources make applications larger and slow down builds.
+
+
+   The unused resource check can ignore tests. If you want to include
+   resources that are only referenced from tests, consider packaging them in a
+   test source set instead.
+
+   You can include test sources in the unused resource check by setting the
+   system property lint.unused-resources.include-tests =true, and to exclude
+   them (usually for performance reasons), use
+   lint.unused-resources.exclude-tests =true.
+   ,
+
+/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml:17: Warning: The application adaptive icon is missing a monochrome tag [MonochromeLauncherIcon]
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+^
+/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml:17: Warning: The application adaptive roundIcon is missing a monochrome tag [MonochromeLauncherIcon]
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+^
+
+   Explanation for issues of type "MonochromeLauncherIcon":
+   If android:roundIcon and android:icon are both in your manifest, you must
+   either remove the reference to android:roundIcon if it is not needed; or,
+   supply the monochrome icon in the drawable defined by the android:roundIcon
+   and android:icon attribute.
+
+   For example, if android:roundIcon and android:icon are both in the
+   manifest, a launcher might choose to use android:roundIcon over
+   android:icon to display the adaptive app icon. Therefore, your themed
+   application iconwill not show if your monochrome attribute is not also
+   specified in android:roundIcon.
+
+/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/res/drawable/icn_chevron_up.png: Warning: Found bitmap drawable res/drawable/icn_chevron_up.png in densityless folder [IconLocation]
+
+   Explanation for issues of type "IconLocation":
+   The res/drawable folder is intended for density-independent graphics such
+   as shapes defined in XML. For bitmaps, move it to drawable-mdpi and
+   consider providing higher and lower resolution versions in drawable-ldpi,
+   drawable-hdpi and drawable-xhdpi. If the icon really is density independent
+   (for example a solid color) you can place it in drawable-nodpi.
+
+   https://developer.android.com/guide/practices/screens_support.html
+
+/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/res/layout/activity_main.xml:49: Warning: Missing contentDescription attribute on image [ContentDescription]
+            <ImageView
+             ~~~~~~~~~
+
+   Explanation for issues of type "ContentDescription":
+   Non-textual widgets like ImageViews and ImageButtons should use the
+   contentDescription attribute to specify a textual description of the widget
+   such that screen readers and other accessibility tools can adequately
+   describe the user interface.
+
+   Note that elements in application screens that are purely decorative and do
+   not provide any content or enable a user action should not have
+   accessibility content descriptions. In this case, set their descriptions to
+   @null. If your app's minSdkVersion is 16 or higher, you can instead set
+   these graphical elements' android:importantForAccessibility attributes to
+   no.
+
+   Note that for text fields, you should not set both the hint and the
+   contentDescription attributes since the hint will never be shown. Just set
+   the hint.
+
+   https://developer.android.com/guide/topics/ui/accessibility/apps#special-cases
+
+/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/java/org/tensorflow/lite/examples/imageclassification/fragments/CameraFragment.kt:230: Warning: Number formatting does not take into account locale settings. Consider using String.format instead. [SetTextI18n]
+            imageClassifierHelper.maxResults.toString()
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/java/org/tensorflow/lite/examples/imageclassification/fragments/CameraFragment.kt:235: Warning: Number formatting does not take into account locale settings. Consider using String.format instead. [SetTextI18n]
+            imageClassifierHelper.numThreads.toString()
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "SetTextI18n":
+   When calling TextView#setText
+   * Never call Number#toString() to format numbers; it will not handle
+   fraction separators and locale-specific digits properly. Consider using
+   String#format with proper format specifications (%d or %f) instead.
+   * Do not pass a string literal (e.g. "Hello") to display text. Hardcoded
+   text can not be properly translated to other languages. Consider using
+   Android resource strings instead.
+   * Do not build messages by concatenating text chunks. Such messages can not
+   be properly translated.
+
+   https://developer.android.com/guide/topics/resources/localization.html
+
+/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/res/layout/info_bottom_sheet.xml:71: Warning: Hardcoded string "0ms", should use @string resource [HardcodedText]
+                android:text="0ms"
+                ~~~~~~~~~~~~~~~~~~
+/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/res/layout/info_bottom_sheet.xml:114: Warning: Hardcoded string "0.50", should use @string resource [HardcodedText]
+                    android:text="0.50"
+                    ~~~~~~~~~~~~~~~~~~~
+/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/res/layout/info_bottom_sheet.xml:165: Warning: Hardcoded string "3", should use @string resource [HardcodedText]
+                    android:text="3"
+                    ~~~~~~~~~~~~~~~~
+/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/res/layout/info_bottom_sheet.xml:216: Warning: Hardcoded string "2", should use @string resource [HardcodedText]
+                    android:text="2"
+                    ~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "HardcodedText":
+   Hardcoding text attributes directly in layout files is bad for several
+   reasons:
+
+   * When creating configuration variations (for example for landscape or
+   portrait) you have to repeat the actual text (and keep it up to date when
+   making changes)
+
+   * The application cannot be translated to other languages by just adding
+   new translations for existing string resources.
+
+   There are quickfixes to automatically extract this hardcoded string into a
+   resource lookup.
+
+/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/res/layout/info_bottom_sheet.xml:84: Warning: TextView-1 can overlap LinearLayout-3 if @string/label_confidence_threshold grows due to localized text expansion [RelativeOverlap]
+            <TextView
+             ~~~~~~~~
+/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/res/layout/info_bottom_sheet.xml:135: Warning: TextView-1 can overlap LinearLayout-3 if @string/label_max_results grows due to localized text expansion [RelativeOverlap]
+            <TextView
+             ~~~~~~~~
+/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/res/layout/info_bottom_sheet.xml:186: Warning: TextView-1 can overlap LinearLayout-3 if @string/label_threads grows due to localized text expansion [RelativeOverlap]
+            <TextView
+             ~~~~~~~~
+/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/res/layout/info_bottom_sheet.xml:235: Warning: TextView-1 can overlap @id/spinner_delegate if @string/label_delegate grows due to localized text expansion [RelativeOverlap]
+            <TextView
+             ~~~~~~~~
+/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/res/layout/info_bottom_sheet.xml:260: Warning: TextView-1 can overlap @id/spinner_model if @string/label_models grows due to localized text expansion [RelativeOverlap]
+            <TextView
+             ~~~~~~~~
+
+   Explanation for issues of type "RelativeOverlap":
+   If relative layout has text or button items aligned to left and right sides
+   they can overlap each other due to localized text expansion unless they
+   have mutual constraints like toEndOf/toStartOf.
+
+/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/res/layout/info_bottom_sheet.xml:95: Warning: Consider replacing android:layout_alignParentRight with android:layout_alignParentEnd="true" to better support right-to-left layouts [RtlHardcoded]
+                android:layout_alignParentRight="true"
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/res/layout/info_bottom_sheet.xml:146: Warning: Consider replacing android:layout_alignParentRight with android:layout_alignParentEnd="true" to better support right-to-left layouts [RtlHardcoded]
+                android:layout_alignParentRight="true"
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/res/layout/info_bottom_sheet.xml:197: Warning: Consider replacing android:layout_alignParentRight with android:layout_alignParentEnd="true" to better support right-to-left layouts [RtlHardcoded]
+                android:layout_alignParentRight="true"
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/res/layout/info_bottom_sheet.xml:246: Warning: Consider replacing android:layout_alignParentRight with android:layout_alignParentEnd="true" to better support right-to-left layouts [RtlHardcoded]
+                android:layout_alignParentRight="true"
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/stefanovergani/Projects/made_in_italy/image_classification/app/src/main/res/layout/info_bottom_sheet.xml:271: Warning: Consider replacing android:layout_alignParentRight with android:layout_alignParentEnd="true" to better support right-to-left layouts [RtlHardcoded]
+                android:layout_alignParentRight="true"
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "RtlHardcoded":
+   Using Gravity#LEFT and Gravity#RIGHT can lead to problems when a layout is
+   rendered in locales where text flows from right to left. Use Gravity#START
+   and Gravity#END instead. Similarly, in XML gravity and layout_gravity
+   attributes, use start rather than left.
+
+   For XML attributes such as paddingLeft and layout_marginLeft, use
+   paddingStart and layout_marginStart. NOTE: If your minSdkVersion is less
+   than 17, you should add both the older left/right attributes as well as the
+   new start/end attributes. On older platforms, where RTL is not supported
+   and the start/end attributes are unknown and therefore ignored, you need
+   the older left/right attributes. There is a separate lint check which
+   catches that type of error.
+
+   (Note: For Gravity#LEFT and Gravity#START, you can use these constants even
+   when targeting older platforms, because the start bitmask is a superset of
+   the left bitmask. Therefore, you can use gravity="start" rather than
+   gravity="left|start".)
+
+0 errors, 52 warnings
