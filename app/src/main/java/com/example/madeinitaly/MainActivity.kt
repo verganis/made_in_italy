@@ -25,6 +25,17 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // Register for permission result
+    private val requestPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { isGranted ->
+        if (isGranted) {
+            openGallery()
+        } else {
+            Utils.showToast(this, "Storage permission is required")
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -35,7 +46,11 @@ class MainActivity : AppCompatActivity() {
 
         // Set up the button click listener
         binding.buttonUpload.setOnClickListener {
-            openGallery()
+            if (PermissionUtils.checkStoragePermission(this)) {
+                openGallery()
+            } else {
+                requestPermissionLauncher.launch(PermissionUtils.getRequiredPermission())
+            }
         }
 
         // Observe LiveData
@@ -54,7 +69,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         viewModel.isProcessing.observe(this) { isProcessing ->
-            // Here you could show a progress indicator if needed
+            binding.progressBar.visibility = if (isProcessing) View.VISIBLE else View.GONE
         }
 
         viewModel.errorMessage.observe(this) { errorMessage ->

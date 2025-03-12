@@ -48,12 +48,16 @@ class TextRecognitionViewModel : ViewModel() {
                 .addOnFailureListener { e ->
                     _isProcessing.value = false
                     _errorMessage.value = "Text recognition failed: ${e.message}"
-                    Log.e(TAG, "Text recognition failed", e)
+                    Utils.logError("Text recognition failed", e)
                 }
         } catch (e: IOException) {
             _isProcessing.value = false
             _errorMessage.value = "Error processing image: ${e.message}"
-            Log.e(TAG, "Error processing image", e)
+            Utils.logError("Error processing image", e)
+        } catch (e: Exception) {
+            _isProcessing.value = false
+            _errorMessage.value = "Unexpected error: ${e.message}"
+            Utils.logError("Unexpected error during text recognition", e)
         }
     }
 
