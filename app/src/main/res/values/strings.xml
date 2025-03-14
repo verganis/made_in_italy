@@ -2,4 +2,9 @@
 <string name="app_name">Made in Italy</string>
 <string name="upload_from_gallery">Upload from gallery</string>
 <string name="selected_image">Selected image</string>
+
+<string name="verify_product">Verify Product</string>
+<string name="authentic_product">Authentic Italian Product</string>
+<string name="counterfeit_product">Counterfeit Product</string>
+<string name="unverified_product">Unable to Verify</string>
 </resources>

@@ -1,16 +1,17 @@
 package com.example.madeinitaly
 
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.Matrix
 import android.net.Uri
-import android.provider.MediaStore
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.madeinitaly.cloud.CloudVisionService
 import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.text.TextRecognition
 import com.google.mlkit.vision.text.latin.TextRecognizerOptions
+import kotlinx.coroutines.launch
+import java.io.IOException
 
 class TextRecognitionViewModel : ViewModel() {
     private val _imageUri = MutableLiveData<Uri>()
@@ -19,6 +20,9 @@ class TextRecognitionViewModel : ViewModel() {
     private val _recognizedText = MutableLiveData<String>()
     val recognizedText: LiveData<String> = _recognizedText
 
+    private val _detectedLabels = MutableLiveData<List<Pair<String, Float>>>()
+    val detectedLabels: LiveData<List<Pair<String, Float>>> = _detectedLabels
+
     private val _isProcessing = MutableLiveData<Boolean>()
     val isProcessing: LiveData<Boolean> = _isProcessing
 
@@ -26,6 +30,7 @@ class TextRecognitionViewModel : ViewModel() {
     val errorMessage: LiveData<String> = _errorMessage
 
     private val recognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS)
+    private val cloudVisionService = CloudVisionService()
 
     fun setImage(uri: Uri) {
         _imageUri.value = uri
@@ -33,13 +38,9 @@ class TextRecognitionViewModel : ViewModel() {
 
     fun recognizeText(context: Context, uri: Uri) {
         _isProcessing.value = true
+
         try {
-            val bitmap = MediaStore.Images.Media.getBitmap(context.contentResolver, uri)
-
-            // Image preprocessing: scale and slightly rotate
-            val processedBitmap = preprocessBitmap(bitmap)
-
-            val inputImage = InputImage.fromBitmap(processedBitmap, 0)
+            val inputImage = InputImage.fromFilePath(context, uri)
 
             recognizer.process(inputImage)
                 .addOnSuccessListener { text ->
@@ -55,36 +56,51 @@ class TextRecognitionViewModel : ViewModel() {
                     _errorMessage.value = "Text recognition failed: ${e.message}"
                     Utils.logError("Text recognition failed", e)
                 }
-        } catch (e: Exception) {
+        } catch (e: IOException) {
             _isProcessing.value = false
             _errorMessage.value = "Error processing image: ${e.message}"
             Utils.logError("Error processing image", e)
+        } catch (e: Exception) {
+            _isProcessing.value = false
+            _errorMessage.value = "Unexpected error: ${e.message}"
+            Utils.logError("Unexpected error during text recognition", e)
         }
     }
 
-    private fun preprocessBitmap(originalBitmap: Bitmap): Bitmap {
-        // Scale the image
-        val scaledBitmap = Bitmap.createScaledBitmap(
-            originalBitmap,
-            originalBitmap.width * 2,
-            originalBitmap.height * 2,
-            true
-        )
+    fun analyzeImageWithCloudVision(context: Context, uri: Uri) {
+        _isProcessing.value = true
 
-        // Slight rotation matrix
-        val matrix = Matrix().apply {
-            postRotate(1f) // Slight 1-degree rotation
+        viewModelScope.launch {
+            try {
+                // Process text detection
+                cloudVisionService.detectText(context, uri).fold(
+                    onSuccess = { text ->
+                        _recognizedText.value = if (text.isNotEmpty()) text else "No text found in image"
+                    },
+                    onFailure = { e ->
+                        _errorMessage.value = "Cloud text detection failed: ${e.message}"
+                    }
+                )
+
+                // Process label detection
+                cloudVisionService.detectLabels(context, uri).fold(
+                    onSuccess = { labels ->
+                        _detectedLabels.value = labels
+                    },
+                    onFailure = { e ->
+                        _errorMessage.value = "Cloud label detection failed: ${e.message}"
+                    }
+                )
+            } catch (e: Exception) {
+                _errorMessage.value = "Cloud Vision analysis failed: ${e.message}"
+                Utils.logError("Cloud Vision analysis failed", e)
+            } finally {
+                _isProcessing.value = false
+            }
         }
+    }
 
-        // Apply rotation and return
-        return Bitmap.createBitmap(
-            scaledBitmap,
-            0,
-            0,
-            scaledBitmap.width,
-            scaledBitmap.height,
-            matrix,
-            true
-        )
+    companion object {
+        private const val TAG = "TextRecognitionViewModel"
     }
 }

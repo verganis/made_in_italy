@@ -38,6 +38,23 @@ android {
         compose = true
         viewBinding = true
     }
+    packaging {
+        resources {
+            excludes += listOf(
+                "META-INF/DEPENDENCIES",
+                "META-INF/LICENSE",
+                "META-INF/LICENSE.txt",
+                "META-INF/license.txt",
+                "META-INF/NOTICE",
+                "META-INF/NOTICE.txt",
+                "META-INF/notice.txt",
+                "META-INF/ASL2.0",
+                "META-INF/INDEX.LIST",
+                "META-INF/io.netty.versions.properties",
+                "META-INF/native-image/**"
+            )
+        }
+    }
 }
 
 dependencies {
@@ -61,7 +78,6 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
     // ML Kit for text recognition
     implementation("com.google.mlkit:text-recognition:16.0.0")
-
     // For image handling and display
     implementation("com.github.bumptech.glide:glide:4.15.1")
 
@@ -70,4 +86,11 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
+    // Google Cloud Vision API
+    implementation("com.google.cloud:google-cloud-vision:3.12.0")
+    implementation("com.google.auth:google-auth-library-oauth2-http:1.19.0")
+    implementation("com.squareup.okhttp3:okhttp:4.11.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
+    // Google Cloud Vision API
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
 }
