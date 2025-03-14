@@ -70,8 +70,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupObservers() {
         viewModel.recognizedText.observe(this) { text ->
-            binding.textViewResult.text = text
-
             // Process detected info if labels are also available
             viewModel.detectedLabels.value?.let { labels ->
                 processExtractedData(text, labels)
@@ -82,7 +80,6 @@ class MainActivity : AppCompatActivity() {
             val labelText = labels.joinToString("\n") {
                 "${it.first} (${String.format("%.1f", it.second * 100)}%)"
             }
-            binding.textViewLabels.text = "Detected features:\n$labelText"
 
             // Process detected info if text is also available
             viewModel.recognizedText.value?.let { text ->
