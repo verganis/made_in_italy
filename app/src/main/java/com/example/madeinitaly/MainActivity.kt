@@ -22,8 +22,12 @@ class MainActivity : AppCompatActivity() {
             result.data?.data?.let { uri ->
                 viewModel.setImage(uri)
                 binding.buttonAnalyze.isEnabled = true
+
+                // Clear previous results
                 binding.authenticityImage.visibility = View.GONE
                 binding.authenticityText.visibility = View.GONE
+                binding.textViewResult.text = ""
+
                 Glide.with(this).load(uri).into(binding.imageView)
             }
         }
