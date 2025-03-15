@@ -1,8 +1,13 @@
 package com.example.madeinitaly
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.method.LinkMovementMethod
+import android.text.style.ClickableSpan
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -123,8 +128,33 @@ class MainActivity : AppCompatActivity() {
             }
             details.append("\n")
 
+            // Add alternative shopping suggestion with clickable link
+            details.append("FIND THE AUTHENTIC PRODUCT AT BIG C SUPERMARKET (500m)\n\n")
+
             // Set the result text - just show banned substances info and extracted text
-            binding.textViewResult.text = details.toString() + "\n\nExtracted Text:\n" + text
+            binding.textViewResult.text = details.toString() + "\nExtracted Text:\n" + text
+
+            // Make the supermarket text clickable
+            val spannable = SpannableString(binding.textViewResult.text)
+            val startPos = details.toString().indexOf("FIND THE AUTHENTIC")
+            val endPos = details.toString().indexOf("(500m)") + "(500m)".length
+
+            if (startPos != -1 && endPos != -1) {
+                spannable.setSpan(
+                    object : ClickableSpan() {
+                        override fun onClick(widget: View) {
+                            val mapIntent = Intent(Intent.ACTION_VIEW,
+                                Uri.parse("https://maps.app.goo.gl/A9nVKNyMdcCtYrnK9"))
+                            startActivity(mapIntent)
+                        }
+                    },
+                    startPos,
+                    endPos,
+                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+                )
+                binding.textViewResult.text = spannable
+                binding.textViewResult.movementMethod = LinkMovementMethod.getInstance()
+            }
         } else {
             // If no banned substances, just display the extracted text without product details
             binding.textViewResult.text = text
