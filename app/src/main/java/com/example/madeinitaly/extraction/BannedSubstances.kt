@@ -71,10 +71,15 @@ object BannedSubstances {
         val normalizedText = ingredientText.lowercase().trim()
         val foundSubstances = mutableListOf<String>()
 
-        // Simple text search for banned substances
+        // More thorough check for banned substances by looking for each alias
         bannedSubstances.forEach { (substance, aliases) ->
-            if (aliases.any { alias -> normalizedText.contains(alias.lowercase()) }) {
-                foundSubstances.add(substance)
+            for (alias in aliases) {
+                // Check for exact matches (surrounded by non-word characters)
+                val aliasPattern = "\\b${alias.lowercase()}\\b"
+                if (aliasPattern.toRegex().containsMatchIn(normalizedText)) {
+                    foundSubstances.add(substance)
+                    break  // Found one alias, no need to check others for this substance
+                }
             }
         }
 

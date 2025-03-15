@@ -32,7 +32,7 @@ object DataExtractor {
         val productionDate = extractProductionDate(text)
         val madeInItaly = MADE_IN_ITALY_PATTERN.matcher(text).find()
 
-        // Extract and check ingredients
+        // Extract and check ingredients - ensure we check the entire text
         val (containsBanned, bannedList) = checkForBannedIngredients(text)
 
         // Calculate confidence based on detected labels
@@ -57,18 +57,31 @@ object DataExtractor {
 
     /**
      * Checks if text contains any banned substances
+     * First tries to isolate the ingredient list, but also checks the entire text
      */
     private fun checkForBannedIngredients(text: String): Pair<Boolean, List<String>> {
-        // First try to isolate the ingredient list section
+        // Try to isolate the ingredient list section first
         val matcher = INGREDIENT_LIST_PATTERN.matcher(text)
-        val ingredientText = if (matcher.find()) {
-            matcher.group(2) ?: text
+        val ingredientSection = if (matcher.find()) {
+            matcher.group(2) ?: ""
         } else {
-            // If no ingredient section is explicitly found, check the entire text
-            text
+            ""
         }
 
-        return BannedSubstances.containsBannedSubstances(ingredientText)
+        // Check both the isolated ingredient section and the complete text
+        val (containsBannedInSection, bannedInSection) =
+            if (ingredientSection.isNotEmpty())
+                BannedSubstances.containsBannedSubstances(ingredientSection)
+            else
+                Pair(false, emptyList())
+
+        // Always check the complete text as well to catch all mentions
+        val (containsBannedInFullText, bannedInFullText) = BannedSubstances.containsBannedSubstances(text)
+
+        // Combine results
+        val allBannedSubstances = (bannedInSection + bannedInFullText).distinct()
+
+        return Pair(containsBannedInSection || containsBannedInFullText, allBannedSubstances)
     }
 
     private fun extractCertifications(text: String): List<String> {
