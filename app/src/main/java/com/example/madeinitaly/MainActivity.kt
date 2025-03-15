@@ -77,10 +77,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         viewModel.detectedLabels.observe(this) { labels ->
-            val labelText = labels.joinToString("\n") {
-                "${it.first} (${String.format("%.1f", it.second * 100)}%)"
-            }
-
             // Process detected info if text is also available
             viewModel.recognizedText.value?.let { text ->
                 if (text.isNotEmpty() && text != "No text found in image") {
@@ -100,6 +96,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun processExtractedData(text: String, labels: List<Pair<String, Float>>) {
+        // Still need to extract product data to check for banned substances
         val productData = DataExtractor.extractProductData(text, labels)
 
         // Initially hide authenticity indicators
@@ -123,34 +120,12 @@ class MainActivity : AppCompatActivity() {
             }
             details.append("\n")
 
-            // Add product details
-            addProductDetails(details, productData)
-
-            // Set the result text
+            // Set the result text - just show banned substances info and extracted text
             binding.textViewResult.text = details.toString() + "\n\nExtracted Text:\n" + text
         } else {
-            // If no banned substances, just display the extracted text
-            val details = StringBuilder()
-
-            // Add product details if available
-            addProductDetails(details, productData)
-
-            // Set the result text
-            binding.textViewResult.text = if (details.isNotEmpty()) {
-                details.toString() + "\n\nExtracted Text:\n" + text
-            } else {
-                text
-            }
+            // If no banned substances, just display the extracted text without product details
+            binding.textViewResult.text = text
         }
-    }
-
-    private fun addProductDetails(details: StringBuilder, productData: ProductDataModel) {
-        if (productData.name.isNotBlank()) details.append("Product: ${productData.name}\n")
-        if (productData.manufacturer.isNotBlank()) details.append("Manufacturer: ${productData.manufacturer}\n")
-        if (productData.productionLocation.isNotBlank()) details.append("Origin: ${productData.productionLocation}\n")
-        if (productData.certifications.isNotEmpty()) details.append("Certifications: ${productData.certifications.joinToString(", ")}\n")
-        if (productData.productionDate.isNotBlank()) details.append("Production Date: ${productData.productionDate}\n")
-        if (productData.serialNumber.isNotBlank()) details.append("Serial Number: ${productData.serialNumber}\n")
     }
 
     private fun openGallery() {

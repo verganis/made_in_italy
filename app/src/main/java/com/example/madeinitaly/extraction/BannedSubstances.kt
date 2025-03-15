@@ -71,15 +71,25 @@ object BannedSubstances {
         val normalizedText = ingredientText.lowercase().trim()
         val foundSubstances = mutableListOf<String>()
 
-        // More thorough check for banned substances by looking for each alias
+        // Special pattern for E-codes which might appear with various delimiters
+        val eCodePattern = "\\b(E-?\\d{3}[a-z]?)\\b".toRegex()
+        val eCodesInText = eCodePattern.findAll(normalizedText).map { it.groupValues[1] }.toList()
+
+        // Check each banned substance
         bannedSubstances.forEach { (substance, aliases) ->
-            for (alias in aliases) {
-                // Check for exact matches (surrounded by non-word characters)
-                val aliasPattern = "\\b${alias.lowercase()}\\b"
-                if (aliasPattern.toRegex().containsMatchIn(normalizedText)) {
-                    foundSubstances.add(substance)
-                    break  // Found one alias, no need to check others for this substance
-                }
+            // First check if any E-codes in the text match our aliases
+            if (aliases.any { alias ->
+                    alias.lowercase().matches("e-?\\d{3}[a-z]?".toRegex()) &&
+                            eCodesInText.any { eCode -> eCode.replace("-", "").equals(alias.replace("-", ""), ignoreCase = true) }
+                }) {
+                foundSubstances.add(substance)
+            }
+            // Then check other aliases with word boundaries
+            else if (aliases.any { alias ->
+                    val aliasRegex = "\\b${Regex.escape(alias.lowercase())}\\b".toRegex()
+                    aliasRegex.containsMatchIn(normalizedText)
+                }) {
+                foundSubstances.add(substance)
             }
         }
 
