@@ -23,14 +23,23 @@ object DataExtractor {
     // "Made in Italy" pattern
     private val MADE_IN_ITALY_PATTERN = Pattern.compile("(?i)(made in italy|prodotto in italia|fabbricato in italia)")
 
+    // Ingredient list patterns - to help identify ingredient sections
+    private val INGREDIENT_LIST_PATTERN = Pattern.compile("(?i)(ingredients|ingredienti|ingredientes)[:;.]\\s*(.+)")
+
     fun extractProductData(text: String, labels: List<Pair<String, Float>>): ProductDataModel {
         val certifications = extractCertifications(text)
         val serialNumber = extractSerialNumber(text)
         val productionDate = extractProductionDate(text)
         val madeInItaly = MADE_IN_ITALY_PATTERN.matcher(text).find()
 
+        // Extract and check ingredients
+        val (containsBanned, bannedList) = checkForBannedIngredients(text)
+
         // Calculate confidence based on detected labels
         val italianConfidence = calculateItalianConfidence(labels)
+
+        // Adjust confidence if banned substances are found
+        val adjustedConfidence = if (containsBanned) 0.0f else italianConfidence
 
         return ProductDataModel(
             id = System.currentTimeMillis().toString(),
@@ -40,8 +49,26 @@ object DataExtractor {
             productionDate = productionDate ?: "",
             serialNumber = serialNumber ?: "",
             productionLocation = if (madeInItaly) "Italy" else "",
-            confidenceScore = italianConfidence
+            confidenceScore = adjustedConfidence,
+            containsBannedSubstances = containsBanned,
+            bannedSubstancesFound = bannedList
         )
+    }
+
+    /**
+     * Checks if text contains any banned substances
+     */
+    private fun checkForBannedIngredients(text: String): Pair<Boolean, List<String>> {
+        // First try to isolate the ingredient list section
+        val matcher = INGREDIENT_LIST_PATTERN.matcher(text)
+        val ingredientText = if (matcher.find()) {
+            matcher.group(2) ?: text
+        } else {
+            // If no ingredient section is explicitly found, check the entire text
+            text
+        }
+
+        return BannedSubstances.containsBannedSubstances(ingredientText)
     }
 
     private fun extractCertifications(text: String): List<String> {

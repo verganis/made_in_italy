@@ -102,44 +102,55 @@ class MainActivity : AppCompatActivity() {
     private fun processExtractedData(text: String, labels: List<Pair<String, Float>>) {
         val productData = DataExtractor.extractProductData(text, labels)
 
-        // Show authenticity result
-        val confidence = productData.getAuthenticityConfidence()
+        // Initially hide authenticity indicators
+        binding.authenticityImage.visibility = View.GONE
+        binding.authenticityText.visibility = View.GONE
 
-        binding.authenticityImage.visibility = View.VISIBLE
-        binding.authenticityText.visibility = View.VISIBLE
+        // Check for banned substances first
+        if (productData.containsBannedSubstances) {
+            // Show the counterfeit indicator if banned substances are found
+            binding.authenticityImage.visibility = View.VISIBLE
+            binding.authenticityImage.setImageResource(R.drawable.ic_thumb_down)
+            binding.authenticityText.visibility = View.VISIBLE
+            binding.authenticityText.text = getString(R.string.counterfeit_product)
+            binding.authenticityText.setTextColor(getColor(R.color.counterfeit_red))
 
-        when {
-            confidence > 0.7f -> {
-                binding.authenticityImage.setImageResource(R.drawable.ic_thumb_up)
-                binding.authenticityText.text = getString(R.string.authentic_product)
-                binding.authenticityText.setTextColor(getColor(R.color.authentic_green))
+            // Display which banned substances were found
+            val details = StringBuilder()
+            details.append("This product contains substances not allowed in Italian/EU products:\n")
+            productData.bannedSubstancesFound.forEach { substance ->
+                details.append("• $substance\n")
             }
-            confidence < 0.3f -> {
-                binding.authenticityImage.setImageResource(R.drawable.ic_thumb_down)
-                binding.authenticityText.text = getString(R.string.counterfeit_product)
-                binding.authenticityText.setTextColor(getColor(R.color.counterfeit_red))
-            }
-            else -> {
-                binding.authenticityImage.setImageResource(R.drawable.ic_question_mark)
-                binding.authenticityText.text = getString(R.string.unverified_product)
-                binding.authenticityText.setTextColor(getColor(R.color.unverified_yellow))
+            details.append("\n")
+
+            // Add product details
+            addProductDetails(details, productData)
+
+            // Set the result text
+            binding.textViewResult.text = details.toString() + "\n\nExtracted Text:\n" + text
+        } else {
+            // If no banned substances, just display the extracted text
+            val details = StringBuilder()
+
+            // Add product details if available
+            addProductDetails(details, productData)
+
+            // Set the result text
+            binding.textViewResult.text = if (details.isNotEmpty()) {
+                details.toString() + "\n\nExtracted Text:\n" + text
+            } else {
+                text
             }
         }
+    }
 
-        // Display product details
-        val details = StringBuilder()
+    private fun addProductDetails(details: StringBuilder, productData: ProductDataModel) {
         if (productData.name.isNotBlank()) details.append("Product: ${productData.name}\n")
         if (productData.manufacturer.isNotBlank()) details.append("Manufacturer: ${productData.manufacturer}\n")
         if (productData.productionLocation.isNotBlank()) details.append("Origin: ${productData.productionLocation}\n")
         if (productData.certifications.isNotEmpty()) details.append("Certifications: ${productData.certifications.joinToString(", ")}\n")
         if (productData.productionDate.isNotBlank()) details.append("Production Date: ${productData.productionDate}\n")
         if (productData.serialNumber.isNotBlank()) details.append("Serial Number: ${productData.serialNumber}\n")
-
-        binding.textViewResult.text = if (details.isNotEmpty()) {
-            details.toString() + "\n\nExtracted Text:\n" + text
-        } else {
-            text
-        }
     }
 
     private fun openGallery() {

@@ -9,7 +9,9 @@ data class ProductDataModel(
     val serialNumber: String = "",
     val productionLocation: String = "",
     val authenticityCode: String = "",
-    val confidenceScore: Float = 0.0f
+    val confidenceScore: Float = 0.0f,
+    val containsBannedSubstances: Boolean = false,
+    val bannedSubstancesFound: List<String> = emptyList()
 ) {
     fun isValid(): Boolean {
         return name.isNotBlank() &&
@@ -17,6 +19,11 @@ data class ProductDataModel(
     }
 
     fun getAuthenticityConfidence(): Float {
+        // If banned substances are found, product is definitely not authentic
+        if (containsBannedSubstances) {
+            return 0.0f
+        }
+
         // Basic confidence calculation based on available data completeness
         var score = 0.0f
         if (name.isNotBlank()) score += 0.1f
