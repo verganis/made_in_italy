@@ -9,7 +9,6 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
-import com.example.madeinitaly.data.ProductDataModel
 import com.example.madeinitaly.databinding.ActivityMainBinding
 import com.example.madeinitaly.extraction.DataExtractor
 
